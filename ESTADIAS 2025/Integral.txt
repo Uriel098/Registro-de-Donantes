@@ -1,0 +1,123 @@
+create database integral;
+use integral;
+
+create table carreras(
+id_carrera bigint primary key auto_increment,
+carrera varchar(80),
+carr varchar(4)
+);
+
+insert into carreras values(1, 'ADMINISTRACIÓN ÁREA FORMULACIÓN Y EVALUACIÓN DE PROYECTOS', 'AFEP');
+insert into carreras values(2, 'DESARROLLO DE NEGOCIOS AREA MERCADOTECNIA', 'DN');
+insert into carreras values(3, 'ENERGÍAS RENOVABLES AREA ENERGÍA SOLAR', 'ER');
+insert into carreras values(4, 'GASTRONOMIA', 'GA');
+insert into carreras values(5, 'MANTENIMIENTO AREA INDUSTRIAL', 'MI');
+insert into carreras values(6, 'MANUFACTURA AERONAÚTICA ÁREA MAQUINADOS DE PRECISIÓN', 'MAN');
+insert into carreras values(7, 'MECATRÓNICA ÁREA AUTOMATIZACIÓN', 'MT');
+insert into carreras values(8, 'MECÁNICA ÁREA INDUSTRIAL', 'ME');
+insert into carreras values(9, 'MECÁNICA ÁREA MOLDES Y TROQUELES', 'MTQ');
+insert into carreras values(10, 'MINERIA ÁREA BENEFICIO MINERO', 'MIN');
+insert into carreras values(11, 'PARAMÉDICO', 'PA');
+insert into carreras values(12, 'PROCESOS INDUSTRIALES ÁREA MANUFACTURA', 'PIM');
+insert into carreras values(13, 'PROCESOS INDUSTRIALES ÁREA TECNOLOGÍA GRÁFICA', 'PIT');
+insert into carreras values(14, 'TECNOLOGÍAS DE LA INFORMACIÓN ÁREA DESARROLLO DE SOFTWARE MULTIPLATAFORMA', 'TIDS');
+insert into carreras values(15, 'TECNOLOGÍAS DE LA INFORMACIÓN ÁREA INFRAESTRUCTURA DE REDES DIGITALES', 'TIRD');
+select * from carreras;
+
+create table Categorias(
+id_Categoria bigint primary key auto_increment,
+Categoria varchar(40)
+);
+
+insert into Categorias values(1, 'Desarrollo del Emprendimiento');
+insert into Categorias values(2, 'Actividades Artísticas y Culturales');
+insert into Categorias values(3, 'Actividades Físicas y Deportivas');
+insert into Categorias values(4, 'Orientación Profesional');
+insert into Categorias values(5, 'Orientación Psicopedagógica');
+insert into Categorias values(6, 'Salud');
+insert into Categorias values(7, 'Extracurriculares');
+select * from Categorias;
+
+create table Instructores(
+id_Instructor bigint primary key auto_increment,
+Instructor varchar(80),
+Celular varchar(20)
+);
+
+create table Actividades(
+id_Actividad bigint primary key auto_increment,
+Actividad varchar(80),
+id_Categoria bigint,
+Puntaje int
+);
+
+insert into Actividades values(1, 'Rondalla y canto', 2, 20);
+insert into Actividades values(2, 'Danza experimental', 2, 20);
+insert into Actividades values(3, 'Declamación y oratoria', 2, 20);
+insert into Actividades values(4, 'Lectoescritura', 2, 20);
+insert into Actividades values(5, 'Cine club', 2, 20);
+insert into Actividades values(6, 'Danza regional mexicana', 2, 20);
+insert into Actividades values(7, 'Mural en gis', 2, 20);
+insert into Actividades values(8, 'Teatro', 2, 20);
+insert into Actividades values(9, 'Ajedrez', 3, 20);
+insert into Actividades values(10, 'Béisbol', 3, 20);
+insert into Actividades values(11, 'Futbol asociación varonil', 3, 20);
+insert into Actividades values(12, 'Futbol asociación femenil', 3, 20);
+insert into Actividades values(13, 'Softbol', 3, 20);
+insert into Actividades values(14, 'Basquetbol', 3, 20);
+insert into Actividades values(15, 'Voleibol varonil', 3, 20);
+insert into Actividades values(16, 'Voleibol femenil', 3, 20);
+insert into Actividades values(17, 'Acondicionamiento físico', 3, 20);
+insert into Actividades values(18, 'Atletismo', 3, 20);
+insert into Actividades values(19, 'Futbol siete', 3, 20);
+insert into Actividades values(20, 'Taekwondo', 3, 20);
+insert into Actividades values(21, 'Evento JATIC 2021 Nogales', 7, 20);
+insert into Actividades values(22, 'Evento JATIC 2022 Hermosillo', 7, 20);
+insert into Actividades values(23, 'Evento LOTS 2023', 7, 20);
+insert into Actividades values(24, 'Curso Evaluación de ideas de negocio', 6, 10);
+insert into Actividades values(25, 'Curso Formulación y Evaluacón de proyectos', 6, 10);
+insert into Actividades values(26, 'Curso Digitaliza paso a paso tu negocio', 6, 10);
+insert into Actividades values(27, 'Curso Ciberseguridad en el trabajo', 6, 10);
+insert into Actividades values(28, 'Curso Prevención de drogas Sector Salud', 6, 5);
+insert into Actividades values(29, 'Certificación Microsoft Word', 4, 20);
+insert into Actividades values(30, 'Proyecto de Vida (psicopedaogía)', 5, 10);
+
+create table Grupos(
+id_Grupo bigint primary key auto_increment,
+Grupo varchar(20),
+id_Actividad bigint,
+id_Instructor bigint,
+Periodo varchar(6),
+Horario varchar(20),
+Lugar varchar(20)
+);
+
+create table Estudiantes(
+id_Estudiante bigint primary key auto_increment,
+Estudiante varchar(80),
+Matricula varchar(8),
+Carr varchar(4),
+id_carrera bigint
+);
+
+create table Inscritos(
+id_Inscrito bigint primary key auto_increment,
+id_Estudiante bigint,
+id_Grupo bigint
+);
+
+create table usuarios(
+id_usuario bigint primary key auto_increment,
+Usuario varchar(40),
+Cuenta varchar(20),
+Clave varchar(128),
+nivel int
+);
+
+insert into usuarios values(null, 'Administrador',   'admin',  md5('admin'),     1);
+insert into usuarios values(null, 'Fermin Romo',     'fermin', md5('Dirije.12'), 1);
+insert into usuarios values(null, 'Alina Rodriguez', 'alina',  md5('Atiende.1'), 2);
+select * from usuarios;
+
+
+
